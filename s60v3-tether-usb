@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# phone must be in "PC Suite" mode (note: not in "Connect PC to web" mode)
+
+function ctrl_c() {
+    echo "Restarting NetworkManager"
+    sudo service NetworkManager start
+    exit
+}
+
+trap ctrl_c SIGINT
+echo "Stopping NetworkManager"
+sudo service NetworkManager stop
+echo "USB tethering (CTRl-C to finish)"
+echo "(assuming /dev/ttyACM0)"
+# if /dev/ttyACM0 does not work, disconnect phone type "sudo udevadm
+# monitor --udev" and reconnect phone (choosing PC Suite mode): look
+# for the correct/dev/tty*** and replace it in /etc/wvdial.conf
+sudo wvdial usb 
+
+ctrl_c
