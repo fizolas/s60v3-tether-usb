@@ -15,7 +15,7 @@ Run "s60v3-tether-usb" in a terminal to tether the phone,
 
 Ctrl-C stops the tethering session leaving the system consistent (both during dial-up channel search or during wvdial)
 
-Tethering works well with Nokia E52, but it shoud work with other phones too.
+Tethering works well with Nokia E52, but it should work with other phones too.
 
 Note 1: default device for connection is /dev/ttyACM0. It this does not work, disconnect phone type "sudo udevadm monitor --udev" and reconnect phone (choosing "PC Suite" mode): look
 for the correct /dev/tty*** device and replace it in /etc/wvdial.conf
